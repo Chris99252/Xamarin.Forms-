@@ -8,6 +8,6 @@
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
         <Entry Text="{Binding MyEntry}" />
         <Label Text="{Binding MyLabel}" />
-        <Button Text="Hello" Command="{Binding HelloCommand}"/>
+        <Button Text="Hello" Command="{Binding HelloCommand}" />
     </StackLayout>
 </ContentPage>

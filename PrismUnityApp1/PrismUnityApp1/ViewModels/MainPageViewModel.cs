@@ -1,42 +1,43 @@
 ﻿using Prism.Commands;
+using Prism.Mvvm;
 using Prism.Navigation;
 using System.ComponentModel;
 
 namespace PrismUnityApp1.ViewModels
 {
-    public class MainPageViewModel : INotifyPropertyChanged, INavigationAware
+    public class MainPageViewModel : BindableBase, INavigationAware
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private string _MyEntry;
-        private string _MyLabel;
         public DelegateCommand HelloCommand { get; set; }
 
+        #region MyEntry
+
+        private string _MyEntry;
+
+        /// <summary>
+        /// PropertyDescription
+        /// </summary>
         public string MyEntry
         {
-            get { return _MyEntry; }
-            set
-            {
-                if (_MyEntry != value)
-                {
-                    _MyEntry = value;
-                    OnPropertyChanged("MyEntry");
-                }
-            }
+            get { return this._MyEntry; }
+            set { this.SetProperty(ref this._MyEntry, value); }
         }
 
+        #endregion MyEntry
+
+        #region MyLabel
+
+        private string _MyLabel;
+
+        /// <summary>
+        /// PropertyDescription
+        /// </summary>
         public string MyLabel
         {
-            get { return _MyLabel; }
-            set
-            {
-                if (_MyLabel != value)
-                {
-                    _MyLabel = value;
-                    OnPropertyChanged("MyLabel");
-                }
-            }
+            get { return this._MyLabel; }
+            set { this.SetProperty(ref this._MyLabel, value); }
         }
+
+        #endregion MyLabel
 
         public MainPageViewModel()
         {
@@ -56,17 +57,6 @@ namespace PrismUnityApp1.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                // 若  PropertyChanged 有被綁定，則將會執行這個事件，
-                // 以進行頁面控制項的內容更新
-                PropertyChanged(this,
-                    new PropertyChangedEventArgs(propertyName));
-            }
         }
     }
 }
