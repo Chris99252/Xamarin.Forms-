@@ -6,7 +6,9 @@ namespace PrismUnityApp1
 {
     public partial class App : PrismApplication
     {
-        public App(IPlatformInitializer initializer = null) : base(initializer) { }
+        public App(IPlatformInitializer initializer = null) : base(initializer)
+        {
+        }
 
         protected override void OnInitialized()
         {
@@ -19,6 +21,7 @@ namespace PrismUnityApp1
         {
             Container.RegisterTypeForNavigation<NavigationPage>();
             Container.RegisterTypeForNavigation<MainPage>();
+            Container.RegisterTypeForNavigation<NewPage>();
         }
     }
 }

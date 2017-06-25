@@ -14,11 +14,15 @@ namespace PrismUnityApp1.ViewModels
 
         public DelegateCommand HelloCommand { get; set; }
 
-        public MainPageViewModel()
+        private readonly INavigationService navigationService;
+
+        public MainPageViewModel(INavigationService navigationService)
         {
+            this.navigationService = navigationService;
             HelloCommand = new DelegateCommand(() =>
             {
                 MyLabel = MyEntry;
+                this.navigationService.NavigateAsync("NewPage");
             });
         }
 
